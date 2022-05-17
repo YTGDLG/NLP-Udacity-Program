@@ -1,7 +1,7 @@
 from keras import backend as K
 from keras.models import Model
 from keras.layers import (BatchNormalization, Conv1D, Dense, Input, 
-    TimeDistributed, Activation, Bidirectional, SimpleRNN, GRU, LSTM, Dropout, MaxPooling1D)
+    TimeDistributed, Activation, Bidirectional, SimpleRNN, GRU, LSTM, Dropout)
 
 def simple_rnn_model(input_dim, output_dim=29):
     """ Build a recurrent network for speech 
@@ -157,7 +157,7 @@ def final_model(input_dim, filters, kernel_size, conv_stride,
     time_dense1 = TimeDistributed(Dense(output_dim))(bn_rnn)
     
      # Dropout
-    dropout = Dropout(0.5) (time_dense1)
+    dropout = Dropout(0.2)(time_dense1)
     
     time_dense2 = TimeDistributed(Dense(output_dim))(dropout)
     
